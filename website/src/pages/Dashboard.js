@@ -209,8 +209,6 @@ const Dashboard = () => {
         Refresh
       </button>
       <p className="current-time">Current Time: {currentTime}</p> */}
-
-<div>  <ModeOfTrasport/> </div>
     <div className="chart-container2">
       <h3>Carbon Emission Breakdown by Device</h3>
       <CO2BreakdownStackedBarChart data={data} />
@@ -225,6 +223,8 @@ const Dashboard = () => {
         <h3>Carbon Emission Breakdown by Manufacturer</h3>
         <EmissionsTrendChart data={manufacturerData} options={commonOptions} />
       </div>
+
+    <div>  <ModeOfTrasport/> </div>
     </div>
   );
 };
