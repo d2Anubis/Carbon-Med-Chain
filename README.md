@@ -11,4 +11,3 @@ Before you start, make sure you have the following installed:
 - [npm](https://www.npmjs.com/) (v6.x or later)
 - [Truffle](https://www.trufflesuite.com/truffle) (v5.x or later)
 - [Ganache](https://www.trufflesuite.com/ganache) (for local blockchain)
-- [MetaMask](https://metamask.io/) (for interacting with the blockchain via browser)
