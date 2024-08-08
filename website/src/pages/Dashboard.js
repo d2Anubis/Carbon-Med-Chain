@@ -11,17 +11,61 @@ import ModeOfTrasport from '../components/ModeOfTransport';
 // const contractAddress = 'YOUR_CONTRACT_ADDRESS'; // Replace with your contract address
 // const contract = new web3.eth.Contract(CarbonDataStorage.abi, contractAddress);
 
-const data = [
-  { DeviceName: 'MRI Scanner', ManufacturingCO2: 500000, TransportCO2: 20000, UsageCO2: 75000, Manufacturer: 'General Hospital', date: '2024-01-01'},
-  { DeviceName: 'X-ray', ManufacturingCO2: 200000, TransportCO2: 15000, UsageCO2: 60000, Manufacturer: 'General Hospital',  date: '2024-02-01'},
-  { DeviceName: 'Ventilator', ManufacturingCO2: 100000, TransportCO2: 10000, UsageCO2: 60000, Manufacturer: 'County Hospital', date: '2024-03-01'},
-  { DeviceName: 'Ultrasound', ManufacturingCO2: 80000, TransportCO2: 8000, UsageCO2: 15000, Manufacturer: 'General Hospital', date: '2024-01-01'},
-  { DeviceName: 'ECG Machine', ManufacturingCO2: 60000, TransportCO2: 5000, UsageCO2: 9000, Manufacturer: 'City Clinic', date: '2024-02-01'},
-  { DeviceName: 'CT Scanner', ManufacturingCO2: 450000, TransportCO2: 25000, UsageCO2: 60000, Manufacturer: 'General Hospital', date: '2024-03-01'},
-  { DeviceName: 'Defibrillator', ManufacturingCO2: 30000, TransportCO2: 3000, UsageCO2: 5000, Manufacturer: 'Emergency Center', date: '2024-04-01'},
-  { DeviceName: 'Infusion Pump', ManufacturingCO2: 25000, TransportCO2: 2000, UsageCO2: 2500, Manufacturer: 'General Hospital', date: '2024-05-01'},
-  { DeviceName: 'Dialysis Machine', ManufacturingCO2: 90000, TransportCO2: 5000, UsageCO2: 40000, Manufacturer: 'Kidney Center', date: '2024-06-01'},
-];
+// const data = [
+//   { DeviceName: 'MRI Scanner', ManufacturingCO2: 500000, TransportCO2: 20000, UsageCO2: 75000, Manufacturer: 'General Hospital', date: '2024-01-01'},
+//   { DeviceName: 'X-ray', ManufacturingCO2: 200000, TransportCO2: 15000, UsageCO2: 60000, Manufacturer: 'General Hospital',  date: '2024-02-01'},
+//   { DeviceName: 'Ventilator', ManufacturingCO2: 100000, TransportCO2: 10000, UsageCO2: 60000, Manufacturer: 'County Hospital', date: '2024-03-01'},
+//   { DeviceName: 'Ultrasound', ManufacturingCO2: 80000, TransportCO2: 8000, UsageCO2: 15000, Manufacturer: 'General Hospital', date: '2024-01-01'},
+//   { DeviceName: 'ECG Machine', ManufacturingCO2: 60000, TransportCO2: 5000, UsageCO2: 9000, Manufacturer: 'City Clinic', date: '2024-02-01'},
+//   { DeviceName: 'CT Scanner', ManufacturingCO2: 450000, TransportCO2: 25000, UsageCO2: 60000, Manufacturer: 'General Hospital', date: '2024-03-01'},
+//   { DeviceName: 'Defibrillator', ManufacturingCO2: 30000, TransportCO2: 3000, UsageCO2: 5000, Manufacturer: 'Emergency Center', date: '2024-04-01'},
+//   { DeviceName: 'Infusion Pump', ManufacturingCO2: 25000, TransportCO2: 2000, UsageCO2: 2500, Manufacturer: 'General Hospital', date: '2024-05-01'},
+//   { DeviceName: 'Dialysis Machine', ManufacturingCO2: 90000, TransportCO2: 5000, UsageCO2: 40000, Manufacturer: 'Kidney Center', date: '2024-06-01'},
+// ];
+
+const axios = require('axios');
+const qs = require('qs');
+
+const clientSecret = "cOf42tXQQl5Uq3Zu";
+const clientId = "0E6GqiQZo9u35RhWV9laySgZE0TUpnW7";
+const tenantId = "5e0665f4-77c9-41d9-93ab-a4f14958cb2a";
+
+const tokenUrl = `https://au.api.opentext.com/tenants/${tenantId}/oauth2/token`;
+const data = qs.stringify({
+    grant_type: 'client_credentials',
+    client_id: clientId,
+    client_secret: clientSecret
+});
+const headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+axios.post(tokenUrl, data, { headers })
+    .then(response => {
+        const response_data = response.data;
+        const fileId = "cj1iODY4YWJhZC1iOTMzLTQwY2YtOGFjNy04NTNlNmViOWM5NzUmaT0zZjgzODg5MS1mMjA0LTQ5YTQtOWNlMy00ZDQxMWNiOTBmNjk=";
+        if ('access_token' in response_data) {
+            const accessToken = response_data['access_token'];
+            console.log("Access Token:", accessToken);
+            // Use the access token to access the desired API
+            const apiUrl = `https://css.au.api.opentext.com/v2/content/${fileId}/download`;  // Replace with the actual API endpoint
+            const authHeader = { Authorization: `Bearer ${accessToken}` };
+            axios.get(apiUrl, { headers: authHeader })
+                .then(apiResponse => {
+                    const data = apiResponse.data;
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error("Error accessing the API:", error);
+                });
+        } else {
+            console.error("Failed to retrieve access token:", response_data);
+        }
+    })
+    .catch(error => {
+        console.error("Error getting access token:", error);
+    });
+
 
 const formatDate = (dateString) => {
   const options = { month: 'long' };
