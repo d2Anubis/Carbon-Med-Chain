@@ -1,0 +1,13 @@
+/* styles.css */
+.chart-container {
+    width: 600px; /* 20% of the viewport width */
+    height: 300px;
+    margin: 10px;
+  }
+  
+  .chart {
+    width: 100%;
+    height: auto;
+    max-height: 300px; /* Adjust the height as needed */
+  }
+  

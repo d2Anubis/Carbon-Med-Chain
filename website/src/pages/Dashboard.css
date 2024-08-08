@@ -1,0 +1,91 @@
+/* Center the entire dashboard container */
+.dashboard {
+  display: flex;
+  flex-wrap: wrap; /* Allow containers to wrap to the next line if there's not enough space */
+  justify-content: center; /* Center the containers horizontally */
+  padding: 20px; /* Add padding around the dashboard */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  width: 100%; /* Ensure the dashboard takes up the full width of its container */
+  max-width: 1200px; /* Set a max-width for the dashboard container */
+  margin: 0 auto; /* Center the dashboard horizontally in its container */
+}
+
+/* Style for each chart container */
+.chart-container {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 50px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 20px); /* Two boxes per row with space for margin */
+  max-width: 400px; /* Ensure containers don’t exceed this width */
+}
+
+/* Style for each chart container */
+.chart-container2 {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 50px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* width: calc(50% - 20px); Two boxes per row with space for margin */
+  max-width: 100%; /* Ensure containers don’t exceed this width */
+  max-height: 600px;
+}
+
+/* Ensure the charts inside the containers are responsive */
+.chart {
+  position: relative;
+  height: 300px; /* Adjust height */
+  width: 100%; /* Make it responsive */
+}
+
+/* Style for chart headings */
+h3 {
+  font-size: 1.2em; /* Adjust font size if needed */
+  margin-bottom: 10px;
+}
+
+h1 {
+  /* font-size: 1.2em; Adjust font size if needed */
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allow containers to wrap to the next line if there's not enough space */
+  justify-content: center; 
+  color: chocolate;
+}
+
+.refresh-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ffc400; /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.refresh-button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+.current-time {
+  position: fixed;
+  top: 30px;
+  right: 10px;
+  padding: 10px 20px;
+  margin-top: 50px;
+  font-size: 0.8rem;
+}
+
+/* Media query for screens less than 600px wide */
+@media (max-width: 600px) {
+  .chart-container {
+    width: calc(100% - 20px); /* One box per row with space for margin */
+  }
+}
