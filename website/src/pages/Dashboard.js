@@ -7,8 +7,8 @@ import ModeOfTrasport from '../components/ModeOfTransport';
 import Web3 from 'web3';
 import CarbonDataStorage from './abis/CarbonDataStorage.json';
 
-const web3 = new Web3(Web3.givenProvider || 'http://127.0.0.1:7545'); // Ganache URL
-const contractAddress = 'YOUR_CONTRACT_ADDRESS'; // Replace with your contract address
+const web3 = new Web3(Web3.givenProvider || 'http://127.0.0.1:7545');
+const contractAddress = '0x1234567890abcdef1234567890abcdef12345678';
 const contract = new web3.eth.Contract(CarbonDataStorage.abi, contractAddress);
 
 const axios = require('axios');
