@@ -4,24 +4,12 @@ import './Dashboard.css';
 import CO2BreakdownStackedBarChart from '../components/CO2BreakdownStackedBarChart';
 import ModeOfTrasport from '../components/ModeOfTransport';
 
-// import Web3 from 'web3';
-// import CarbonDataStorage from './abis/CarbonDataStorage.json';
+import Web3 from 'web3';
+import CarbonDataStorage from './abis/CarbonDataStorage.json';
 
-// const web3 = new Web3(Web3.givenProvider || 'http://127.0.0.1:7545'); // Ganache URL
-// const contractAddress = 'YOUR_CONTRACT_ADDRESS'; // Replace with your contract address
-// const contract = new web3.eth.Contract(CarbonDataStorage.abi, contractAddress);
-
-// const data = [
-//   { DeviceName: 'MRI Scanner', ManufacturingCO2: 500000, TransportCO2: 20000, UsageCO2: 75000, Manufacturer: 'General Hospital', date: '2024-01-01'},
-//   { DeviceName: 'X-ray', ManufacturingCO2: 200000, TransportCO2: 15000, UsageCO2: 60000, Manufacturer: 'General Hospital',  date: '2024-02-01'},
-//   { DeviceName: 'Ventilator', ManufacturingCO2: 100000, TransportCO2: 10000, UsageCO2: 60000, Manufacturer: 'County Hospital', date: '2024-03-01'},
-//   { DeviceName: 'Ultrasound', ManufacturingCO2: 80000, TransportCO2: 8000, UsageCO2: 15000, Manufacturer: 'General Hospital', date: '2024-01-01'},
-//   { DeviceName: 'ECG Machine', ManufacturingCO2: 60000, TransportCO2: 5000, UsageCO2: 9000, Manufacturer: 'City Clinic', date: '2024-02-01'},
-//   { DeviceName: 'CT Scanner', ManufacturingCO2: 450000, TransportCO2: 25000, UsageCO2: 60000, Manufacturer: 'General Hospital', date: '2024-03-01'},
-//   { DeviceName: 'Defibrillator', ManufacturingCO2: 30000, TransportCO2: 3000, UsageCO2: 5000, Manufacturer: 'Emergency Center', date: '2024-04-01'},
-//   { DeviceName: 'Infusion Pump', ManufacturingCO2: 25000, TransportCO2: 2000, UsageCO2: 2500, Manufacturer: 'General Hospital', date: '2024-05-01'},
-//   { DeviceName: 'Dialysis Machine', ManufacturingCO2: 90000, TransportCO2: 5000, UsageCO2: 40000, Manufacturer: 'Kidney Center', date: '2024-06-01'},
-// ];
+const web3 = new Web3(Web3.givenProvider || 'http://127.0.0.1:7545'); // Ganache URL
+const contractAddress = 'YOUR_CONTRACT_ADDRESS'; // Replace with your contract address
+const contract = new web3.eth.Contract(CarbonDataStorage.abi, contractAddress);
 
 const axios = require('axios');
 const qs = require('qs');
